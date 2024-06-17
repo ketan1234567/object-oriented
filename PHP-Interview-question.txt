@@ -1,0 +1,983 @@
+Commonly used PHP 5 String Functions
+
+1)strlen($str):-This function returns the length of the string or the number of characters in the string including whitespaces.
+
+Exmple:
+
+<?php
+
+$str = "Welcome to Studytonight";
+
+// using strlen in echo method
+echo "Length of the string is: ". strlen($str);
+
+?>
+
+Output:-Length of the string is: 23
+
+2)strrev($str):This function is used to reverse a string.
+
+Exmple:
+
+<?php
+
+$str = "Welcome to Studytonight";
+
+// using strrev in echo method
+echo "Reverse: ". strrev($str);
+
+?>
+
+Output:-Reverse: thginotydutS ot emocleW
+
+
+3)str_replace($replacethis, $replacewith, $str):-This function is used to replace a part of the string with some text. 
+While using this function, the first argument is the part of string that you want to replace, 
+second argument is the new text you want to include, and the last argument is the string variable itself.
+
+Exmple:
+
+<?php
+
+$str = str_replace("Studytonight", "Studytonight.com", "Welcome to Studytonight");
+
+echo $str;
+
+?>
+
+Output:-Welcome to Studytonight.com
+
+
+4)str_repeat($str, $counter):-This function is used to repeat a string a given number of times.
+ The first argument is the string and the second argument is the number of times the string should be repeated.
+
+Exmple:
+
+<?php
+
+$str = "Studytonight";
+
+echo str_repeat($str, 4);
+
+?>
+
+Output:-StudytonightStudytonightStudytonightStudytonight
+
+5)explode(separator, $str, $limit):
+
+This function is used to break a string, create an array of the broken parts of the string and return the array.
+ The first argument, separator defines where to break the string from. It can be a space, hiphen(-) or any other character.
+
+The second argument of this function is the string itself and the third argument is the limit, which specifies the number of array elements to return. 
+the third argument is optional.
+
+Let's have an example,
+
+<?php
+
+$str = "Its a beautiful day";
+    
+// we can directly print the result of explode
+print_r(explode(" ", $str));
+
+?>
+
+Output:-
+(
+    [0] => Its 
+    [1] => a 
+    [2] => beautiful 
+    [3] => day 
+)
+
+In the example above, we have provided space as separator to break the string and return an array.
+
+If we provide the third argument limit as well, we can limit the number of array elements returned. For example, if we provide 2 as the third argument, then we will only get 2 elements in the array, the first two.
+
+6)implode(separator, $arr):-This function is used to form a string using the array elements from the array provided and join them using the separator.
+
+Let's take an example,
+
+<?php
+
+$arr = array("Its", "a", "beautiful", "day");
+
+// <br> is used to jump to next line
+echo implode(" ", $arr) . "<br>";
+echo implode("-", $arr) . "<br>";
+echo implode("/", $arr) . "<br>";
+
+?>
+
+Output:-
+Its a beautiful day
+Its-a-beautiful-day
+Its/a/beautiful/day
+__________________________________________________________________________________END_________________________________________________
+
+PHP Array Functions
+
+Here’s a complete list of PHP array functions. We know there are a lot, so check out the quick links and table of contents above if you’re looking for a specific one.
+
+1. array():-The array() function is used to create an array.
+
+Example:
+
+<?php
+
+$fruits = array("apple", "banana", "cherry");
+
+echo "Fruits: ";
+
+foreach ($fruits as $fruit) {
+
+echo $fruit . " ";
+
+}
+
+?>
+
+Output:
+
+Fruits: apple banana cherry
+_____________________________________________________________________________
+2)array_combine():-The array_combine() function creates a new array by combining two arrays where one array provides keys and the other provides values.
+
+<?php
+
+$keys = array("a", "b", "c");
+
+$values = array(1, 2, 3);
+
+$combined = array_combine($keys, $values);
+
+echo "Combined Array: ";
+
+foreach ($combined as $key => $value) {
+
+echo "[$key => $value] ";
+
+}
+
+?>
+
+Output:
+
+Combined Array: [a => 1] [b => 2] [c => 3]
+___________________________________________________________________________________________________________
+
+3)array_diff():-calculates the difference between two or more arrays and returns an array containing the values that are present in the first array but not in the other arrays.
+
+Example:
+
+<?php
+
+$arr1 = array("a", "b", "c");
+
+$arr2 = array("b", "c", "d");
+
+$difference = array_diff($arr1, $arr2);
+
+echo "Array Difference: ";
+
+foreach ($difference as $item) {
+
+echo $item . " ";
+
+}
+
+?>
+
+Output:
+
+Array Difference: a
+______________________________________________________________________________________________________________________________________
+
+4)in_array():-The in_array() function checks if a specified value exists in an array. It returns true if the value is found, and false if otherwise.
+
+Example:
+
+<?php
+
+$fruits = array("apple", "banana", "cherry");
+
+$result = in_array("banana", $fruits);
+
+echo "Value 'banana' Exists: " . ($result ? "Yes" : "No");
+
+?>
+
+Output:
+
+Value 'banana' Exists: Yes
+_________________________________________________________________________________________________________________________________________
+5)array_merge():-The array_merge() function merges two or more arrays into a single array.
+Example:
+
+<?php
+
+$arr1 = array("a", "b");
+
+$arr2 = array("c", "d");
+
+$merged = array_merge($arr1, $arr2);
+
+echo "Merged Array: ";
+
+foreach ($merged as $item) {
+
+echo $item . " ";
+
+}
+
+?>
+
+Output:
+
+Merged Array: a b c d
+_______________________________________________________________________________________________________________________________________
+6)array_unique():-array_unique() removes duplicate values from an array and returns a new array with only the unique values.
+
+Example:
+
+<?php
+
+$numbers = array(1, 2, 3, 2, 4, 5, 5);
+
+$uniqueNumbers = array_unique($numbers);;
+
+echo "Unique Numbers: ";
+
+foreach ($uniqueNumbers as $number) {
+
+echo $number . " ";
+
+}
+
+?>
+
+Output:
+
+Unique Numbers: 1 2 3 4 5
+___________________________________________________________________________________________________________________________________________
+3)What is PEAR in PHP?
+
+PEAR is a framework and repository for reusable PHP components. 
+PEAR stands for PHP Extension and Application Repository. 
+It contains all types of PHP code snippets and libraries.
+It also provides a command line interface to install “packages” automatically.
+________________________________________________________________________________________________________________________________________
+4) What is the difference between static and dynamic websites?
+
+Static Websites	Dynamic Websites
+In static websites, content can’t be changed after running the script. You cannot change anything in the site as it is predefined.
+
+	
+In dynamic websites, content of script can be changed at the run time. Its content is regenerated every time a user visits or reloads.
+________________________________________________________________________________________________________________________________________
+Q5. Is PHP a case sensitive language?
+PHP is partially case sensitive. The variable names are case-sensitive but function names are not.
+ If you define the function name in lowercase and call them in uppercase, 
+it will still work. User-defined functions are not case sensitive but the rest of the language is case-sensitive.
+____________________________________________________________________________________________________________________________________
+Q6. What is the meaning of ‘escaping to PHP’?
+The PHP parsing engine needs a way to differentiate PHP code from other elements in the page. The mechanism for doing so is known as ‘escaping to PHP’. Escaping a string means to reduce ambiguity in quotes used in that string.
+___________________________________________________________________________________________________________________________________________
+29-12-2023
+___________________________________________________________________________________________________________________________________________
+Q7. What are the characteristics of PHP variables?
+
+come of the important characteristics of PHP variables include:
+
+All variables in PHP are denoted with a leading dollar sign ($).
+The value of a variable is the value of its most recent assignment.
+Variables are assigned with the = operator, with the variable on the left-hand side and the expression to be evaluated on the right.
+Variables can, but do not need, to be declared before assignment.
+Variables in PHP do not have intrinsic types – a variable does not know in advance whether it will be used to store a number or a string of characters.
+Variables used before they are assigned have default values.
+_____________________________________________________________________________________________________________________________
+Q8. What are the different types of PHP variables?
+
+here are 8 data types in PHP which are used to construct the variables:
+
+Integers − are whole numbers, without a decimal point, like 4195.
+Doubles − are floating-point numbers, like 3.14159 or 49.1.
+Booleans − have only two possible values either true or false.
+NULL − is a special type that only has one value: NULL.
+Strings − are sequences of characters, like ‘PHP supports string operations.’
+Arrays − are named and indexed collections of other values.
+Objects − are instances of programmer-defined classes, which can package up both other kinds of values and functions that are specific to the class.
+Resources − are special variables that hold references to resources external to PHP.
+____________________________________________________________________________________________________________
+
+Q9. What are the rules for naming a PHP variable?
+The following rules are needed to be followed while  naming a PHP variable:
+
+Variable names must begin with a letter or underscore character.
+A variable name can consist of numbers, letters, underscores but you cannot use characters like + , – , % , ( , ) . & , etc.
+__________________________________________________________________________________________________________________________________________Q10. What is NULL?
+NULL is a special data type which can have only one value. A variable of data type NULL is a variable that has no value assigned to it. It can be assigned as follows:
+
+$var = NULL;
+The special constant NULL is capitalized by convention but actually it is case insensitive. So,you can also write it as :
+
+
+$var = null;
+A variable that has been assigned the NULL value, consists of the following properties:
+
+It evaluates to FALSE in a Boolean context.
+It returns FALSE when tested with IsSet() function.
+______________________________________________________________________________________________________________________________________
+Q13. What is the purpose of constant() function?
+The constant() function will return the value of the constant. This is useful when you want to retrieve value of a constant, but you do not know its name, i.e., it is stored in a variable or returned by a function. For example –
+
+
+1
+<?php define("MINSIZE", 50); echo MINSIZE; echo constant("MINSIZE"); // same thing as the previous line ?>
+______________________________________________________________________________________________________________________________
+Q18. What is the difference between PHP4 and PHP5?
+
+PHP4
+
+Constructor have same name as the Class name.
+Everything is passed by value.
+PHP4  does not declare a class as abstract
+PHP4  does not declare a class as abstract
+
+
+PHP5
+
+Constructors are named as _construct and Destructors as _destruct().
+All objects are passed by references.
+PHP5 allows to declare a class as abstract
+It allows to have static Methods and Properties in a class
+___________________________________________________________________________________________________________________________________
+
+Q19.  What is the meaning of a final class and a final method?
+
+The final keyword in a method declaration indicates that the method cannot be overridden by subclasses. 
+A class that is declared final cannot be subclassed. This is particularly useful when we are creating an immutable class like the String class.Properties cannot be declared final, only classes and methods may be declared as final.
+
+______________________________________________________________________________________________________________________________
+
+Q20.  How can you compare objects in PHP?
+We use the operator ‘==’ to test if two objects are instanced from the same class and have same attributes and equal values. We can also test if two objects are referring to the same instance of the same class by the use of the identity operator ‘===’.
+___________________________________________________________________________________________________________________________________________
+Q24. What are the data types in PHP?
+
+PHP support 9 primitive data types:
+
+Scalar Types	
+
+Integer
+Boolean
+Float
+String
+
+Compound Types	
+
+Array
+Object
+Callable
+
+Special Types
+
+Resource
+Null
+___________________________________________________________________________________________________________________________________
+Q25. PHP Callback Functions
+
+Callback Functions
+A callback function (often referred to as just "callback") is a function which is passed as an argument into another function.
+
+Any existing function can be used as a callback function. To use a function as a callback function, pass a string containing the name of the function as the argument of another function:
+
+Pass a callback to PHP's array_map() function to calculate the length of every string in an array:
+
+<?php
+function my_callback($item) {
+  return strlen($item);
+}
+
+$strings = ["apple", "orange", "banana", "coconut"];
+$lengths = array_map("my_callback", $strings);
+print_r($lengths);
+?>
+_____________________________________________________________________________________________________________
+
+Starting with version 7, PHP can pass anonymous functions as callback functions:
+
+<?php
+$strings = ["apple", "orange", "banana", "coconut"];
+$lengths = array_map( function($item) { return strlen($item); } , $strings);
+print_r($lengths);
+?>
+______________________________________________________________________________________________________________________
+
+Callbacks in User Defined Functions
+
+User-defined functions and methods can also take callback functions as arguments. To use callback functions inside a user-defined function or method, call it by adding parentheses to the variable and pass arguments as with normal functions
+
+<?php
+function exclaim($str) {
+  return $str . "! ";
+}
+
+function ask($str) {
+  return $str . "? ";
+}
+
+function printFormatted($str, $format) {
+  // Calling the $format callback function
+  echo $format($str);
+}
+
+// Pass "exclaim" and "ask" as callback functions to printFormatted()
+printFormatted("Hello world", "exclaim");
+printFormatted("Hello world", "ask");
+?>
+______________________________________________________________________________________________________________________________________
+
+PHP Arrow Functions
+
+Arrow functions, also known as “short closures”, is a new feature introduced in PHP 7.4 that provides a more concise syntax for defining anonymous functions. 
+Arrow functions allow you to define a function in a single line of code, making your code more readable and easier to maintain
+
+<?php 
+   
+// Declare an array 
+$arr = [1, 2, 3, 4, 5, 6, 7]; 
+  
+$sum = array_reduce($arr, fn($carry, $item) => $carry + $item); 
+  
+echo $sum; 
+?>
+
+
+
+___________________________________________________________________________________________________________________________________________
+PHP OOP
+
+PHP - The $this Keyword
+
+The $this keyword refers to the current object, and is only available inside methods.
+
+<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function set_color($color) {
+    $this->color = $color;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit();
+$apple->set_name('Apple');
+$apple->set_color('Red');
+echo "Name: " . $apple->get_name();
+echo "<br>";
+echo "Color: " .  $apple->get_color();
+?>
+_________________________________________________________________________________________________________________________________
+PHP - The __construct Function
+A constructor allows you to initialize an object's properties upon creation of the object.
+
+If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
+
+Notice that the construct function starts with two underscores (__)!
+
+We see in the example below, that using a constructor saves us from calling the set_name() method which reduces the amount of code:
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$apple = new Fruit("Apple");
+echo $apple->get_name();
+?>
+_____________________________________________________________________________________________________________________________________
+
+PHP - The __destruct Function
+A destructor is called when the object is destructed or the script is stopped or exited.
+
+If you create a __destruct() function, PHP will automatically call this function at the end of the script.
+
+Notice that the destruct function starts with two underscores (__)!
+
+The example below has a __construct() function that is automatically called when you create an object from a class, and a __destruct() function that is automatically called at the end of the script:
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function __destruct() {
+    echo "The fruit is {$this->name}."; 
+  }
+}
+
+$apple = new Fruit("Apple");
+?>
+____________________________________________________________________________________________________________________________________
+PHP - What is Inheritance?
+Inheritance in OOP = When a class derives from another class.
+
+The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods.
+
+An inherited class is defined by using the extends keyword.
+
+Let's look at an example:
+
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+
+// Strawberry is inherited from Fruit
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? "; 
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red");
+$strawberry->message();
+$strawberry->intro();
+?>
+ 
+</body>
+</html>
+
+Example Explained
+The Strawberry class is inherited from the Fruit class.
+
+This means that the Strawberry class can use the public $name and $color properties as well as the public __construct() and intro() methods from the Fruit class because of inheritance.
+
+The Strawberry class also has its own method: message().
+_______________________________________________________________________________________________________END________________________________
+
+
+PHP - What are Interfaces?
+
+Interfaces allow you to specify what methods a class should implement.
+
+Interfaces make it easy to use a variety of different classes in the same way. When one or more classes use the same interface, it is referred to as "polymorphism".
+
+Interfaces are declared with the interface keyword:
+
+PHP - Interfaces vs. Abstract Classes
+Interface are similar to abstract classes. The difference between interfaces and abstract classes are:
+
+Interfaces cannot have properties, while abstract classes can
+All interface methods must be public, while abstract class methods is public or protected
+All methods in an interface are abstract, so they cannot be implemented in code and the abstract keyword is not necessary
+Classes can implement an interface while inheriting from another class at the same time
+PHP - Using Interfaces
+To implement an interface, a class must use the implements keyword.
+
+A class that implements an interface must implement all of the interface's methods.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+interface Animal {
+  public function makeSound();
+}
+
+class Cat implements Animal {
+  public function makeSound() {
+    echo "Meow";
+  }
+}
+
+$animal = new Cat();
+$animal->makeSound();
+?>
+ 
+</body>
+</html>
+
+Output:
+Meow
+
+<?php
+// Interface definition
+interface Animal {
+  public function makeSound();
+}
+
+// Class definitions
+class Cat implements Animal {
+  public function makeSound() {
+    echo " Meow ";
+  }
+}
+
+class Dog implements Animal {
+  public function makeSound() {
+    echo " Bark ";
+  }
+}
+
+class Mouse implements Animal {
+  public function makeSound() {
+    echo " Squeak ";
+  }
+}
+
+// Create a list of animals
+$cat = new Cat();
+$dog = new Dog();
+$mouse = new Mouse();
+$animals = array($cat, $dog, $mouse);
+
+// Tell the animals to make a sound
+foreach($animals as $animal) {
+  $animal->makeSound();
+}
+?>
+____________________________________________________________________________________________________________________________
+PHP - Static Methods
+Static methods can be called directly - without creating an instance of the class first.
+
+Static methods are declared with the static keyword:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+}
+
+// Call static method
+greeting::welcome();
+?>
+ 
+</body>
+</html>
+
+A class can have both static and non-static methods.
+ A static method can be accessed from a method in the same class using the self keyword and double colon (::):
+
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+  public function __construct() {
+    self::welcome();
+  }
+}
+
+new greeting();
+?>
+
+<?php
+class domain {
+  protected static function getWebsiteName() {
+    return "W3Schools.com";
+  }
+}
+
+class domainW3 extends domain {
+  public $websiteName;
+  public function __construct() {
+    $this -> websiteName = parent::getWebsiteName();
+  }	
+}
+
+$domainW3 = new domainW3;
+echo $domainW3 -> websiteName;
+?>
+______________________________________________________________________________________________________________________________________
+Q28. What are different types of errors available in Php ?
+
+The different types of error in PHP are:
+
+E_ERROR– A fatal error that causes script termination.
+E_WARNING– Run-time warning that does not cause script termination.
+E_PARSE– Compile time parse error.
+E_NOTICE– Run time notice caused due to error in code.
+E_CORE_ERROR– Fatal errors that occur during PHP initial startup.
+E_CORE_WARNING– Warnings that occur during PHP initial startup.
+E_COMPILE_ERROR– Fatal compile-time errors indication problem with script.
+E_USER_ERROR– User-generated error message.
+E_USER_WARNING– User-generated warning message.
+E_USER_NOTICE- User-generated notice message.
+E_STRICT– Run-time notices.
+E_RECOVERABLE_ERROR– Catchable fatal error indicating a dangerous error
+E_ALL– Catches all errors and warnings.
+_________________________________________________________________________________________________________________________________________
+
+03-01-2024
+
+Q29. Explain the syntax for ‘foreach’ loop with example.
+The foreach statement is used to loop through arrays. For each pass the value of the current array element is assigned to $value and the array pointer is moved by one and in the next pass next element will be processed.
+
+Syntax-
+
+foreach (array as value)
+{
+code to be executed;
+}
+
+<?php
+$colors = array("blue", "white", "black");
+ 
+foreach ($colors as $value) {
+echo "$value 
+";
+}
+?>
+___________________________________________________________________________________________________________________________________________
+Q30. What are the different types of Array in PHP?
+There are 3 types of Arrays in PHP:
+
+Indexed Array – An array with a numeric index is known as the indexed array. Values are stored and accessed in linear fashion.
+Associative Array – An array with strings as index is known as the associative array. This stores element values in association with key values rather than in a strict linear index order.
+Multidimensional Array – An array containing one or more arrays is known as multidimensional array. The values are accessed using multiple indices.
+______________________________________________________________________________________________________________________
+Q32. How to concatenate two strings in PHP?
+To concatenate two string variables together, we use the dot (.) operator.
+
+<?php $string1="Hello edureka"; $string2="123"; echo $string1 . " " . $string2; ?>
+_________________________________________________________________________________________________________________________
+Q34. What is the difference between “echo” and “print” in PHP?
+PHP echo output one or more string. It is a language construct not a function. So use of parentheses is not required. But if you want to pass more than one parameter to echo, use of parentheses is required. Whereas, PHP print output a string. It is a language construct not a function. So use of parentheses is not required with the argument list. Unlike echo, it always returns 1.
+Echo can output one or more string but print can only output one string and always returns 1.
+Echo is faster than print because it does not return any value.
+__________________________________________________________________________________________________________________________________
+Q38. What is overloading and overriding in PHP?
+Overloading is defining functions that have similar signatures, yet have different parameters.
+ Overriding is only pertinent to derived classes, where the parent class has defined a method and the derived class wishes to override that method.
+ In PHP, you can only overload methods using the magic method __call.
+______________________________________________________________________________________________________________________________________
+Q45.  What is a lambda function in PHP?
+A lambda function is an anonymous PHP function that can be stored in a variable and passed as an argument to other functions or methods. 
+A closure is a lambda function that is aware of its surrounding context. For example –
+
+$input = array(1, 2, 3, 4, 5);
+$output = array_filter($input, function ($v) { return $v > 2; });
+function ($v) { return $v > 2; } is the lambda function definition. We can store it in a variable so that it can be reusable.
+______________________________________________________________________________________________________________________________________
+Q50. What is the difference between runtime exception and compile time exception?
+An exception that occurs at compile time is called a checked exception.
+ This exception cannot be ignored and must be handled carefully. For example,
+ if you use FileReader class to read data from the file and the file specified in class constructor does not exist, then a
+ FileNotFoundException occurs and you will have to manage that exception.
+ For the purpose, you will have to write the code in a try-catch block and handle the exception. 
+On the other hand, an exception that occurs at runtime is called unchecked-exception.
+________________________________________________________________________________________________________________________________________
+What is $$ in PHP?
+
+PHP $ and $$ Variables. The $var (single dollar) is a normal variable with the name var that stores any value like string, integer, float, etc. 
+The $$var (double dollar) is a reference variable that stores the value of the $variable inside it.
+________________________________________________________________________________________________________________________________________
+What’s the difference between abstract class and interface?
+
+The key difference between classes and interfaces is that a class can implement multiple interfaces, but it can only inherit from a single class. This concept is known as multiple inheritance through interfaces and enables greater flexibility and reusability in code, with traits beings one of the possible solutions to the multiple inheritance problem.
+
+On the other hand, inheritance allows a class to inherit the properties and methods of a parent class, promoting code reuse and organizing the code structure.
+________________________________________________________________________________________________________________________________________
+
+23-01-2024
+
+What is a PHP Session?
+
+A session is a way to store information (in variables) to be used across multiple pages.
+
+Unlike a cookie, the information is not stored on the users computer.
+
+When you work with an application, you open it, do some changes, and then you close it. This is much like a Session. The computer knows who you are. 
+It knows when you start the application and when you end.
+ But on the internet there is one problem: the web server does not know who you are or what you do, because the HTTP address doesn't maintain state.
+
+Session variables solve this problem by storing user information to be used across multiple pages (e.g. username, favorite color, etc).
+ By default, session variables last until the user closes the browser.
+
+So; Session variables hold information about one single user, and are available to all pages in one application
+
+Start a PHP Session
+A session is started with the session_start() function.
+
+Session variables are set with the PHP global variable: $_SESSION.
+
+Now, let's create a new page called "demo_session1.php". In this page, we start a new PHP session and set some session variables:
+
+Exmple:
+<?php
+// Start the session
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+// Set session variables
+$_SESSION["favcolor"] = "green";
+
+echo $_SESSION["favcolor"];
+?>
+</body>
+</html>
+
+output:green
+___________________________________________________________________________________________________________________________________________
+
+What is a Cookie?
+
+A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
+
+
+Create Cookies With PHP
+A cookie is created with the setcookie() function.
+
+Exmple:
+
+<?php
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+?>
+<html>
+<body>
+
+<?php
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
+}
+?>
+
+</body>
+</html>
+________________________________________________________________________________________________________________________________________
+24-01-2023
+
+12. How does inheritance work in PHP?
+
+When a class derives from another class in OOP, this is called inheritance.
+
+The child class will inherit all of the parent class's methods, both protected and public, and it can also have its methods and characteristics.
+
+Using the extends keyword defines an inherited class.
+
+Let's consider a situation:
+
+Exmple:
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+// Blueberry is inherited from Fruit
+class Blueberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? ";
+  }
+}
+$blueberry = new Blueberry("Blueberry", "blue");
+$blueberry->message();
+$blueberry->intro();
+?>
+_________________________________________________________________________________________________________________________________________
+What is JSON?
+
+JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.
+
+Since the JSON format is a text-based format, it can easily be sent to and from a server, and used as a data format by any programming language.
+
+PHP has some built-in functions to handle JSON.
+
+First, we will look at the following two functions:
+
+json_encode()
+json_decode()
+
+Exmple:
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$age = array("Peter"=>35, "Ben"=>37, "Joe"=>43);
+
+echo json_encode($age);
+?>
+
+</body>
+</html>
+
+output:
+{"Peter":35,"Ben":37,"Joe":43}
+
+PHP - json_decode()
+The json_decode() function is used to decode a JSON object into a PHP object or an associative array.
+
+Exmple:
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+ 
+var_dump(json_decode($jsonobj));
+?>
+</body>
+</html>
+output:
+object(stdClass)#1 (3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
+______________________________________________________________________________________________________________________
+
+
