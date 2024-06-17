@@ -787,8 +787,63 @@ Echo can output one or more string but print can only output one string and alwa
 Echo is faster than print because it does not return any value.
 __________________________________________________________________________________________________________________________________
 Q38. What is overloading and overriding in PHP?
+
+
+n PHP, overloading is implemented using magic methods. These magic methods are part of the class but are prefixed with double underscores (e.g., __get, __set, __call). Here are the key magic methods for overloading:
+
+
+<?php
+
+class MyClass {
+    private $data = [];
+
+    public function __get($name) {
+        return $this->data[$name];
+    }
+
+    public function __set($name, $value) {
+        $this->data[$name] = $value;
+    }
+
+    public function __call($name, $arguments) {
+        echo "Call to method '$name' with arguments: " . implode(', ', $arguments);
+    }
+}
+
+$obj = new MyClass();
+$obj->someProperty = 'Hello'; // This will call __set
+echo $obj->someProperty;      // This will call __get
+$obj->someMethod('arg1', 'arg2'); // This will call __call
+
+
+?>
+
+
+
+
 Overloading is defining functions that have similar signatures, yet have different parameters.
+
+
+
  Overriding is only pertinent to derived classes, where the parent class has defined a method and the derived class wishes to override that method.
+
+<?php 
+class ParentClass {
+public function greet(){
+    echo "Hello From parent Class";
+}
+}
+class childClass extends ParentClass {
+    public  function greet(){
+        echo "Hello From child class";
+
+}
+}
+$main=new childClass();
+$main->greet();
+
+?>
+
  In PHP, you can only overload methods using the magic method __call.
 ______________________________________________________________________________________________________________________________________
 Q45.  What is a lambda function in PHP?
@@ -931,7 +986,7 @@ $blueberry->message();
 $blueberry->intro();
 ?>
 _________________________________________________________________________________________________________________________________________
-What is JSON?
+13)What is JSON?
 
 JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.
 
@@ -978,6 +1033,437 @@ var_dump(json_decode($jsonobj));
 </html>
 output:
 object(stdClass)#1 (3) { ["Peter"]=> int(35) ["Ben"]=> int(37) ["Joe"]=> int(43) }
-______________________________________________________________________________________________________________________
+______________________________________________________________________________________________________________
+17-06-2024
 
+14)What are the common uses of include, require, include_once, and require_once?
+
+include and require are used to include files. If the file is not found, include will produce a warning but continue execution, while require will produce a fatal error and stop execution. include_once and require_once are similar but ensure that the file is included only once.
+
+15)Explain the difference between GET and POST methods?
+
+GET method appends data to the URL and has a size limit, whereas POST method sends data as part of the HTTP request body and has no size limit. GET is less secure than POST because data is visible in the URL.
+
+16)How can you connect to a MySQL database in PHP?
+
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "database";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+
+
+17)What are prepared statements and why are they important?
+
+Prepared statements are used to execute the same SQL statements repeatedly with high efficiency and to prevent SQL injection attacks.
+
+
+18)What is the use of the __construct() method in PHP?
+
+__construct() is a magic method that is automatically called when an object of a class is instantiated. It is typically used for initializing class properties.
+
+
+19)How do you handle errors in PHP?
+
+PHP has several error-handling functions such as error_reporting(), set_error_handler(), and try-catch blocks for exceptions. 
+
+Example:
+
+try {
+    // Code that may throw an exception
+    throw new Exception("Error Processing Request", 1);
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
+
+20)What is the difference between unlink() and unset()?
+
+1)unlink() is used to delete a file from the file system. 
+
+2)unset() is used to destroy a specified variable.
+
+
+21)How would you handle file uploads in PHP?
+
+Use the $_FILES superglobal to handle file uploads. 
+
+
+Example:
+
+if ($_FILES['uploaded_file']['error'] == UPLOAD_ERR_OK) {
+    $tmp_name = $_FILES['uploaded_file']['tmp_name'];
+    $name = basename($_FILES['uploaded_file']['name']);
+    move_uploaded_file($tmp_name, "uploads/$name");
+    echo "File successfully uploaded!";
+} else {
+    echo "File upload failed!";
+}
+23)Explain the concept of namespaces in PHP.?
+
+Namespaces in PHP are designed to avoid name collisions in large applications by encapsulating items like classes, functions, and constants in a single unique namespace. 
+
+Example:
+
+namespace MyProject;
+
+class MyClass {
+    // class code
+}
+
+$obj = new \MyProject\MyClass();
+
+24)What are traits in PHP?
+
+Traits are a mechanism for code reuse in single inheritance languages like PHP. A trait is intended to reduce some limitations of single inheritance by enabling a developer to reuse sets of methods freely in several independent classes living in different class hierarchies. 
+
+Example:
+
+
+trait MyTrait {
+    public function sayHello() {
+        echo "Hello!";
+    }
+}
+
+class MyClass {
+    use MyTrait;
+}
+
+$obj = new MyClass();
+$obj->sayHello(); // Outputs: Hello!
+
+
+25)How do you enable error reporting in PHP?
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+26)What are some common performance optimization techniques in PHP?
+
+Use caching mechanisms like OPCache, optimize database queries, minimize file I/O, use efficient algorithms and data structures, and avoid unnecessary computations.
+
+27)What tools or methods do you use for debugging PHP code?
+
+Tools like Xdebug, built-in PHP functions like var_dump(), print_r(), error_log(), and using IDEs with debugging support.
+
+Key Versions and Their Adoption
+
+PHP 8.0: Introduced in November 2020, PHP 8.0 brought major improvements like the JIT (Just-In-Time) compiler, union types, named arguments, and attributes for metadata.
+
+PHP 8.1: Released in November 2021, PHP 8.1 added features such as enums, readonly properties, and performance enhancements.
+
+PHP 8.2: Released in December 2022, PHP 8.2 continued the trend of introducing new features and deprecations to improve performance and security.
+
+Factors Influencing Adoption
+
+New Features: The enhancements and new features in PHP 8.x versions, such as improved performance, better type safety, and new syntax features, encourage developers to upgrade.
+
+Security: With older versions like PHP 7.4 reaching end of life, there are no security updates, which pushes organizations to adopt newer versions.
+
+Compatibility: Compatibility with frameworks and libraries also influences the adoption of newer PHP versions. Many popular frameworks like Laravel and Symfony support PHP 8.x, prompting developers to upgrade.
+
+Conclusion
+
+PHP 8.0 and newer versions are increasingly used in the market due to their performance improvements and new features. While some legacy systems may still be running PHP 7.x, the trend is moving towards PHP 8.x for both new projects and upgrades of existing applications.
+
+______________________________________________________________________________________________________
+
+1)PHP 8.0 Features
+
+1)Just-In-Time (JIT) Compiler:
+Introduces a significant performance improvement by compiling parts of the code at runtime.
+
+2)Union Types:
+Allows specifying multiple types for a parameter, return, or property.
+
+Exmple:
+function foo(int|float $number): int|float {
+    return $number * 2;
+}
+
+3)Named Arguments:
+Allows passing arguments to a function based on the parameter name, improving readability.
+
+function createUser($name, $age, $gender) {
+    // ...
+}
+createUser(age: 30, name: 'John', gender: 'male');
+
+4)Attributes (Annotations):
+
+Introduces native syntax for metadata
+
+#[ExampleAttribute]
+class Example {
+    // ...
+}
+
+5)Match Expression:
+Provides a more powerful and concise alternative to the switch statement.
+
+$result = match($status) {
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    default => 'Unknown',
+};
+
+6)Constructor Property Promotion:
+
+Simplifies class property definitions and assignments.
+
+class Point {
+    public function __construct(
+        public float $x,
+        public float $y,
+    ) {}
+}
+
+7)Nullsafe Operator:
+
+Allows safe navigation through object chains
+
+$country = $session?->user?->getAddress()?->country;
+
+8)Weak Maps:
+Provides a way to store references to objects without preventing their garbage collection.
+
+$weakMap = new WeakMap();
+$obj = new stdClass();
+$weakMap[$obj] = 'value';
+___________________________________________________________PHP_8.1Features_start_____________________________
+
+1)Enums:
+Provides a way to define a set of possible values for a variable.
+
+enum Status {
+    case Active;
+    case Inactive;
+}
+
+2)Readonly Properties:
+
+Ensures properties cannot be modified after initialization.
+
+class User {
+    public readonly string $name;
+    public function __construct(string $name) {
+        $this->name = $name;
+    }
+}
+
+3)Fibers:
+
+Introduces a way to manage code execution flow, enabling coroutines and simplifying asynchronous programming.
+
+$fiber = new Fiber(function() {
+    echo 'Fiber started';
+    Fiber::suspend();
+    echo 'Fiber resumed';
+});
+$fiber->start();
+echo 'Main';
+$fiber->resume();
+
+
+4)Array Unpacking with String Keys:
+
+Allows unpacking arrays with string keys.
+
+Exmple:
+
+$array1 = ["a" => 1];
+$array2 = ["b" => 2, "c" => 3];
+$result = ["d" => 4, ...$array1, ...$array2];
+
+5)Intersection Types:
+
+Allows specifying multiple types that a value must satisfy.
+
+function foo(A&B $value) {
+    // ...
+}
+
+
+___________________________________________________________PHP_8.1Features_END______________________________
+
+PHP 8.2 Features
+
+1)Read-only Classes:
+Makes all properties of a class readonly.
+
+readonly class Post {
+    public function __construct(
+        public string $title,
+        public string $content,
+    ) {}
+}
+
+2)Disjunctive Normal Form (DNF) Types:
+Allows using complex logical operations for type declarations.
+
+function foo((A&B)|C $value) {
+    // ...
+}
+
+3)New true, false, and null Types:
+Allows specifying true, false, and null as standalone types.
+
+function isTrue(true $flag): void {
+    // ...
+}
+
+4)Deprecation of Dynamic Properties:
+
+#[AllowDynamicProperties]
+class Example {
+    // ...
+}
+
+5)Constants in Traits:
+trait MyTrait {
+    public const CONSTANT = 'value';
+}
+
+6)Standalone Types:
+Introduces standalone types like null, false, and true for function parameters and return types.
+___________________________________________________________________________END_________________
+
+Sure! Fibers in PHP are a powerful feature introduced in PHP 8.1 that allow developers to manage the execution flow of their code, enabling coroutines and simplifying asynchronous programming. They provide a way to pause and resume code execution at specific points, which can be particularly useful for tasks that require waiting, such as I/O operations, without blocking the main execution thread.
+
+
+What are Fibers?
+
+Fibers are similar to lightweight threads, but they are managed entirely within the PHP engine and are not reliant on the underlying operating system's threading capabilities. They allow you to yield execution from a running context and resume it later, making it easier to handle asynchronous tasks in a synchronous style.
+
+$fiber = new Fiber(function(): void {
+    echo "Fiber started\n";
+    $value = Fiber::suspend('Fiber paused');
+    echo "Fiber resumed with value: $value\n";
+});
+
+echo "Starting fiber\n";
+$value = $fiber->start();
+echo "Main program: $value\n";
+$fiber->resume('Resuming fiber');
+echo "Main program ends\n";
+
+
+output:
+
+Starting fiber
+Fiber started
+Main program: Fiber paused
+Fiber resumed with value: Resuming fiber
+Main program ends
+
+Key Concepts of Fibers
+
+1)Creating a Fiber:
+A Fiber is created by instantiating the Fiber class with a callable (usually an anonymous function).
+
+$fiber = new Fiber(function() {
+    // Fiber code
+});
+
+2)Starting a Fiber:
+You start a Fiber using the start() method, which begins execution of the Fiber’s callable.
+$fiber->start();
+
+3)Suspending a Fiber:
+
+Within the Fiber, you can suspend execution using Fiber::suspend(). This method can optionally return a value to the calling context.
+
+$value = Fiber::suspend('Optional return value');
+
+
+4)Resuming a Fiber:
+
+After suspension, you can resume execution using the resume() method, optionally passing a value back into the Fiber’s context.
+
+$fiber->resume('Value passed back to Fiber');
+
+
+5)Fiber Lifecycle:
+
+A Fiber has several states: started, suspended, running, and terminated. You can check the state of a Fiber using methods like isStarted(), isSuspended(), isRunning(), and isTerminated().
+
+1)Asynchronous I/O:
+
+Fibers can help manage I/O operations (e.g., file reading, network requests) without blocking the entire script, enabling other tasks to proceed concurrently.
+
+function asyncRead($filename) {
+    $fiber = new Fiber(function() use ($filename) {
+        $content = file_get_contents($filename);
+        Fiber::suspend($content);
+    });
+
+    $fiber->start();
+    return $fiber;
+}
+
+$fiber = asyncRead('example.txt');
+// Do other work here while waiting for the fiber to complete
+$content = $fiber->resume();
+echo $content;
+
+
+2)Concurrency in Web Applications:
+
+Fibers can be used to handle multiple concurrent requests or tasks in a web application, such as handling multiple API calls simultaneously.
+
+
+3)Task Scheduling:
+
+They can be used to build custom task schedulers, where tasks can be paused and resumed based on specific conditions.
+
+
+Example: Using Fibers with Promises
+
+
+Fibers can also be used in combination with promises to manage asynchronous code more intuitively:
+
+
+
+class Promise {
+    private $fiber;
+    private $result;
+
+    public function __construct(callable $task) {
+        $this->fiber = new Fiber($task);
+    }
+
+    public function start() {
+        $this->result = $this->fiber->start();
+    }
+
+    public function getResult() {
+        return $this->fiber->resume();
+    }
+}
+
+// Example usage
+$promise = new Promise(function() {
+    echo "Task started\n";
+    $data = Fiber::suspend('Waiting for data');
+    echo "Received data: $data\n";
+});
+
+$promise->start();
+$result = $promise->getResult(); // Simulate async operation completing
+echo "Final result: $result\n";
+
+
+
+
+
+Fibers in PHP offer a powerful mechanism for managing asynchronous code execution in a more synchronous and readable manner. They are particularly beneficial for handling tasks that involve waiting, such as I/O operations, without blocking the main execution thread. This makes them an excellent tool for improving the performance and responsiveness of PHP applications.
 
